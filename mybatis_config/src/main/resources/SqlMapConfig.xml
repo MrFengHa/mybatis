@@ -10,6 +10,12 @@
     <typeHandlers>
         <typeHandler handler="com.home.handler.DateTypeHandle"></typeHandler>
     </typeHandlers>
+<!--配置分页助手插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
     <!--配置数据源的环境-->
     <environments default="develop">
         <environment id="develop">

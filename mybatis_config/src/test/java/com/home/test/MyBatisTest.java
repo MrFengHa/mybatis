@@ -1,5 +1,7 @@
 package com.home.test;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.home.domain.User;
 import com.home.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
@@ -44,17 +46,43 @@ public class MyBatisTest {
      * 保存
      */
     @Test
-    public void saveTest(){
-        User user = new User(7,"ceshi","abc",new Date());
+    public void saveTest() {
+        User user = new User(7, "ceshi", "abc", new Date());
         userMapper.save(user);
     }
+
     @Test
-    public void selectTest(){
+    public void selectByIdTest() {
         User user = userMapper.findById(7);
         System.out.println(user.getBirthday());
         System.out.println(user);
     }
 
+    @Test
+    public void findAll() {
+        //设置分页的相关参数  当前页 每页显示的条数
+        PageHelper.startPage(1,3);
+
+        List<User> users= userMapper.findAll();
+        for (User user:
+             users) {
+            System.out.println(user);
+        }
+        //获得与分页相关的参数
+        PageInfo<User> pageInfo = new PageInfo<User>(users);
+        System.out.println("获取当前页"+ pageInfo.getPageNum());
+
+        System.out.println("每页显示条数"+pageInfo.getPageSize());
+        System.out.println("总条数"+pageInfo.getTotal());
+        System.out.println("总页数"+pageInfo.getPages());
+        System.out.println("上一页"+pageInfo.getPrePage());
+        System.out.println("下一页"+pageInfo.getNextPage());
+        System.out.println("是否是第一个"+pageInfo.isIsFirstPage());
+        System.out.println("是否是最后一个"+pageInfo.isIsLastPage());
+
+
+
+    }
 
     @After
     public void destroy() {
