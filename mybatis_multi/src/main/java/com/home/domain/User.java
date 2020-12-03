@@ -1,6 +1,7 @@
 package com.home.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 文件描述
@@ -13,6 +14,11 @@ public class User {
     private String username;
     private String password;
     private Date birthday;
+
+    /**
+     * 描述当前用户存在哪些订单
+     */
+    private List<Order> orderList;
 
     public User() {
     }
@@ -56,6 +62,14 @@ public class User {
         this.birthday = birthday;
     }
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -63,6 +77,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
+                ", orderList=" + orderList +
                 '}';
     }
 }

@@ -42,12 +42,27 @@ public class MybatisTest {
         orderMapper = sqlSession.getMapper(OrderMapper.class);
     }
 
+    /**
+     * 一对一查询
+     */
     @Test
-    public void findAllTest() {
+    public void findAllOneOnOneTest() {
         List<Order> orderList = orderMapper.findAll();
         for (Order order :
                 orderList) {
             System.out.println(order);
+        }
+    }
+
+    /**
+     * 一对多查询
+     */
+    @Test
+    public void findAllOneOnMore(){
+        List<User> users = userMapper.findAll();
+        for (User user:
+             users) {
+            System.out.println(user);
         }
     }
 

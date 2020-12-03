@@ -1,6 +1,5 @@
 package com.home.test;
 
-import com.home.domain.User;
 import com.home.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
