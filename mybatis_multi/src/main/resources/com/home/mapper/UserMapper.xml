@@ -2,6 +2,7 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.home.mapper.UserMapper">
+    <!--一对多映射-->
     <resultMap id="userMap" type="user">
         <id column="uid" property="id"></id>
         <result column="username" property="username"></result>
@@ -23,4 +24,28 @@
              orders o
         WHERE u.id = o.id;
     </select>
+    <!--*************************************************************************************-->
+    <!--多对多-->
+    <resultMap id="userRoleMap" type="user">
+        <!--user信息-->
+        <id column="userid" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+        <!--user内部的roleList信息-->
+        <collection property="roleList" ofType="role">
+            <id column="roleid" property="id"></id>
+            <result column="roleName" property="roleName"></result>
+            <result column="roleDesc" property="roleDesc"></result>
+        </collection>
+    </resultMap>
+    <select id="findUserAndRole" resultMap="userRoleMap">
+        select *
+        from user u,
+             user_role ur,
+             role r
+        where u.id = ur.userid
+          and r.id = ur.roleid
+    </select>
+
 </mapper>

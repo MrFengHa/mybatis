@@ -1,5 +1,7 @@
 package com.home.mapper;
 
+import com.home.domain.User;
+
 import java.util.List;
 
 /**

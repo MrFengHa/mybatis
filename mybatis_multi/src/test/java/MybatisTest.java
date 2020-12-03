@@ -66,6 +66,19 @@ public class MybatisTest {
         }
     }
 
+    /**
+     * 多对多查询
+     */
+    @Test
+    public void findAllMoreOnMore(){
+        List<User> users = userMapper.findUserAndRole();
+        for (User user:
+                users) {
+            System.out.println(user);
+        }
+    }
+
+
     @After
     public void destroy() {
         sqlSession.commit();

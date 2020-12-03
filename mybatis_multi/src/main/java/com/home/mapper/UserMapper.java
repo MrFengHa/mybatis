@@ -16,4 +16,10 @@ public interface UserMapper {
      * @return
      */
     List<User> findAll();
+
+    /**
+     * 查询用户角色
+     * @return
+     */
+    List<User> findUserAndRole();
 }
